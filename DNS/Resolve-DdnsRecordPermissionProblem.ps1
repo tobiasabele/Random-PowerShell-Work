@@ -250,7 +250,7 @@ process
 				$Acl = Get-Acl -Path "ActiveDirectory:://RootDSE/$($DnsNodeObject.DistinguishedName)"
 				## Put together all the possible valid accounts that should be the owner and should have Modify or Full Control access to the DNS record object
 				## This can either be the computer account itself or the DHCP service account
-				$ValidAceIdentities = @("$($Domain.NetBIOSName)\$RecordName</code>$", "$($Domain.NetBIOSName)\$DhcpServiceAccount")
+				$ValidAceIdentities = @("$($Domain.NetBIOSName)\$RecordName$", "$($Domain.NetBIOSName)\$DhcpServiceAccount")
 				if ($ValidAceIdentities -notcontains $Acl.Owner)
 				{
 					Write-Log -Message "ACL owner '$($Acl.Owner)' for object '$RecordName' is not valid" -LogLevel '3'
